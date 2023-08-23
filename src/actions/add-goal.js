@@ -1,4 +1,4 @@
-export default function AddNewGoal(state, goalDescription) {
+export default function AddGoal(state, goalDescription) {
   return {
     ...state,
     goalList: state.goalList.concat({
