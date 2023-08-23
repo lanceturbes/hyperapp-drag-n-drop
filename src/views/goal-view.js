@@ -8,21 +8,26 @@ import UpdateDragoverIndex from "../actions/update-dragover-index.js";
 export default function goalView({ goal, index, isHighlighted }) {
   const { id, description } = goal;
 
+  function handleDragEnter(state, event) {
+    event.preventDefault();
+    return state;
+  }
+
+  function handleDragOver(state, event) {
+    event.preventDefault();
+    const { dragoverIndex } = state;
+    return index === dragoverIndex ? state : [UpdateDragoverIndex, index];
+  }
+
   return li(
     {
       class: { "goal-item": true, highlight: isHighlighted },
       draggable: "true",
       ondragstart: [UpdateDragIndex, index],
       ondragend: SwapGoalPositions,
-      ondragenter: (state, event) => {
-        event.preventDefault();
-        return state;
-      },
-      ondragover: (state, event) => {
-        event.preventDefault();
-        const { dragoverIndex } = state;
-        return index === dragoverIndex ? state : [UpdateDragoverIndex, index];
-      },
+      ondragenter: handleDragEnter,
+      ondragover: handleDragOver,
+      ondragleave: [UpdateDragoverIndex, null],
       ondrop: [SwapGoalPositions, index],
     },
     [text(description), button({ onclick: [DeleteGoal, id] }, text("Delete"))]
