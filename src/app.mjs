@@ -1,11 +1,10 @@
-import { div, text } from "@hyperapp/html";
+import { div } from "@hyperapp/html";
 import { app } from "hyperapp";
 
 import goalCreationFormView from "./views/goal-creation-form-view.js";
 import goalView from "./views/goal-view.js";
 
 const init = {
-  dragoverIndex: null,
   currentDragIndex: null,
   goalList: [
     { id: Date.now() - 1, description: "Cool" },
@@ -15,9 +14,8 @@ const init = {
 };
 
 function view(state) {
-  const { goalEditValue, currentDragIndex } = state;
-  return div({}, [
-    text(currentDragIndex ?? "none"),
+  const { goalEditValue } = state;
+  return div([
     goalCreationFormView({ goalEditValue }),
     ...state.goalList.map((goal, index) => goalView({ goal, index })),
   ]);
