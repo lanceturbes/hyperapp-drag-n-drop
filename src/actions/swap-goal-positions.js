@@ -11,5 +11,6 @@ export default function SwapGoalPositions(state, dropIndex) {
     ...state,
     goalList: newGoalList,
     currentDragIndex: null,
+    dragoverIndex: null,
   };
 }

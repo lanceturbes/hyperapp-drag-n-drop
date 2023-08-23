@@ -1,15 +1,16 @@
-import { button, li, p, text } from "@hyperapp/html";
+import { button, li, text } from "@hyperapp/html";
 
 import DeleteGoal from "../actions/delete-goal.js";
 import SwapGoalPositions from "../actions/swap-goal-positions.js";
 import UpdateDragIndex from "../actions/update-drag-index.js";
+import UpdateDragoverIndex from "../actions/update-dragover-index.js";
 
-export default function goalView({ goal, index }) {
+export default function goalView({ goal, index, isHighlighted }) {
   const { id, description } = goal;
 
   return li(
     {
-      class: "goal-item",
+      class: { "goal-item": true, highlight: isHighlighted },
       draggable: "true",
       ondragstart: [UpdateDragIndex, index],
       ondragend: SwapGoalPositions,
@@ -19,7 +20,8 @@ export default function goalView({ goal, index }) {
       },
       ondragover: (state, event) => {
         event.preventDefault();
-        return state;
+        const { dragoverIndex } = state;
+        return index === dragoverIndex ? state : [UpdateDragoverIndex, index];
       },
       ondrop: [SwapGoalPositions, index],
     },

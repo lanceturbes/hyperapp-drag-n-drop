@@ -7,17 +7,21 @@ import goalView from "./views/goal-view.js";
 
 const init = {
   currentDragIndex: null,
-  goalList: getStoredGoals(),
+  dragoverIndex: null,
   goalEditValue: "",
+  goalList: getStoredGoals(),
 };
 
 function view(state) {
-  const { goalEditValue, goalList } = state;
+  const { goalEditValue, goalList, dragoverIndex } = state;
+
   return div([
     goalCreationFormView({ goalEditValue }),
     ul(
       { class: "goal-list" },
-      goalList.map((goal, index) => goalView({ goal, index }))
+      goalList.map((goal, index) =>
+        goalView({ goal, index, isHighlighted: dragoverIndex === index })
+      )
     ),
   ]);
 }
