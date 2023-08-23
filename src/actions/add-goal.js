@@ -1,16 +1,15 @@
-export default function AddGoal(state, goalDescription) {
+import saveGoalList from "../effects/save-goal-list.js";
+
+export default function AddGoal(state, description) {
   const { goalList } = state;
-
-  const newGoalList = goalList.concat({
-    id: Date.now(),
-    description: goalDescription,
-  });
-
-  localStorage.setItem("goal-list", JSON.stringify(newGoalList));
-
-  return {
-    ...state,
-    goalList: newGoalList,
-    goalEditValue: "",
-  };
+  const newGoal = { id: Date.now(), description };
+  const newGoalList = goalList.concat(newGoal);
+  return [
+    {
+      ...state,
+      goalList: newGoalList,
+      goalEditValue: "",
+    },
+    [saveGoalList, { goalList: newGoalList }],
+  ];
 }

@@ -14,7 +14,6 @@ const init = {
 
 function view(state) {
   const { goalEditValue, goalList, dragoverIndex } = state;
-
   return div([
     goalCreationFormView({ goalEditValue }),
     ul(
@@ -27,5 +26,4 @@ function view(state) {
 }
 
 const node = document.getElementById("app");
-
 app({ init, view, node });
