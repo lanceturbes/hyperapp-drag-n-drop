@@ -16,10 +16,12 @@ export default function goalCreationFormView(props) {
   }
 
   return form({ onsubmit: handleSubmit }, [
-    label([
-      text("New Goal"),
-      input({ value: goalEditValue, oninput: handleInput }),
-    ]),
-    button({ type: "submit" }, [text("Add")]),
+    label({ for: "goal-edit-input" }, text("New Goal")),
+    input({
+      id: "goal-edit-input",
+      value: goalEditValue,
+      oninput: handleInput,
+    }),
+    button({ type: "submit" }, text("Add")),
   ]);
 }

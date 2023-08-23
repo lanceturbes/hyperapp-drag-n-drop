@@ -1,4 +1,4 @@
-import { button, div, text } from "@hyperapp/html";
+import { button, li, text } from "@hyperapp/html";
 
 import DeleteGoal from "../actions/delete-goal.js";
 import SwapGoalPositions from "../actions/swap-goal-positions.js";
@@ -7,7 +7,7 @@ import UpdateDragIndex from "../actions/update-drag-index.js";
 export default function goalView({ goal, index }) {
   const { id, description } = goal;
 
-  return div(
+  return li(
     {
       draggable: "true",
       ondragstart: [UpdateDragIndex, index],
