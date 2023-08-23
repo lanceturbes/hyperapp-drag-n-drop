@@ -1,23 +1,24 @@
-import { div } from "@hyperapp/html";
+import { div, ul } from "@hyperapp/html";
 import { app } from "hyperapp";
 
+import getStoredGoals from "./utils/get-stored-goals.js";
 import goalCreationFormView from "./views/goal-creation-form-view.js";
 import goalView from "./views/goal-view.js";
 
 const init = {
   currentDragIndex: null,
-  goalList: [
-    { id: Date.now() - 1, description: "Cool" },
-    { id: Date.now() - 2, description: "Beans" },
-  ],
+  goalList: getStoredGoals(),
   goalEditValue: "",
 };
 
 function view(state) {
-  const { goalEditValue } = state;
+  const { goalEditValue, goalList } = state;
   return div([
     goalCreationFormView({ goalEditValue }),
-    ...state.goalList.map((goal, index) => goalView({ goal, index })),
+    ul(
+      { class: "goal-list" },
+      goalList.map((goal, index) => goalView({ goal, index }))
+    ),
   ]);
 }
 

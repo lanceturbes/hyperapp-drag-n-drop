@@ -1,4 +1,4 @@
-import { button, li, text } from "@hyperapp/html";
+import { button, li, p, text } from "@hyperapp/html";
 
 import DeleteGoal from "../actions/delete-goal.js";
 import SwapGoalPositions from "../actions/swap-goal-positions.js";
@@ -9,6 +9,7 @@ export default function goalView({ goal, index }) {
 
   return li(
     {
+      class: "goal-item",
       draggable: "true",
       ondragstart: [UpdateDragIndex, index],
       ondragend: SwapGoalPositions,
