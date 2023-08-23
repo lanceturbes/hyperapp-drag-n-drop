@@ -18,9 +18,11 @@ export default function goalCreationFormView(props) {
   return form({ onsubmit: handleSubmit }, [
     label({ for: "goal-edit-input" }, text("New Goal")),
     input({
+      autocomplete: "off",
+      autofocus: true,
       id: "goal-edit-input",
-      value: goalEditValue,
       oninput: handleInput,
+      value: goalEditValue,
     }),
     button({ type: "submit" }, text("Add")),
   ]);
