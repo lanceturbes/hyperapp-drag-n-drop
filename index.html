@@ -3,14 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/lib/modern-normalize.css" />
+    <link
+      rel="stylesheet"
+      href="/node_modules/modern-normalize/modern-normalize.css"
+    />
     <link rel="stylesheet" href="/src/app.css" />
     <script type="importmap">
       {
         "imports": {
           "@/": "/src/",
-          "hyperapp": "/lib/hyperapp.mjs",
-          "@hyperapp/html": "/lib/hyperapp-html.mjs"
+          "@hyperapp/html": "/node_modules/@hyperapp/html/index.js",
+          "hyperapp": "/node_modules/hyperapp/index.js"
         }
       }
     </script>

@@ -1,4 +1,4 @@
-import saveGoalList from "../effects/save-goal-list.js";
+import saveGoalList from "@/effects/save-goal-list.js";
 
 export default function DeleteGoal(state, payload) {
   const goalId = payload;
