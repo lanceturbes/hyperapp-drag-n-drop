@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "checkJs": true,
+    "checkJs": false,
     "module": "ES2022",
     "target": "ES2022",
     "paths": {

@@ -7,12 +7,22 @@ body {
   width: 100%;
   background-color: var(--screen);
   color: var(--neutral-on-screen);
-  padding: 8px;
 }
 
 .layout {
+  flex-direction: column;
+  flex: 1;
+  display: flex;
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   max-width: 640px;
   margin: auto;
+  width: 100%;
 }
 
 .goals__list {
@@ -40,6 +50,7 @@ body {
   list-style: none;
   padding: 4px;
   width: 100%;
+  box-shadow: 0 1px 4px 1px rgb(0, 0, 0, 0.1);
 }
 
 .goals__list-item-text {
@@ -49,6 +60,22 @@ body {
 
 .highlight {
   border-color: var(--focus);
+}
+
+.header {
+  align-items: center;
+  justify-content: flex-end;
+  background-color: var(--surface);
+  width: 100%;
+  padding: 8px 16px;
+  gap: 16px;
+  display: flex;
+  margin-bottom: 40px;
+  box-shadow: 0 1px 4px 1px rgb(0, 0, 0, 0.1);
+}
+
+a {
+  cursor: pointer;
 }
 
 label {
@@ -61,6 +88,7 @@ input {
   border-radius: 8px;
   border: none;
   background-color: var(--surface);
+  box-shadow: 0 1px 4px 1px rgb(0, 0, 0, 0.1);
 }
 
 .form {
@@ -83,6 +111,7 @@ button {
   border-radius: 8px;
   background-color: var(--primary);
   color: var(--neutral-on-primary);
+  box-shadow: 0 1px 4px 1px rgb(0, 0, 0, 0.1);
 }
 
 button:disabled {
