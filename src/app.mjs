@@ -1,9 +1,9 @@
 import { div, ul } from "@hyperapp/html";
 import { app } from "hyperapp";
 
-import getStoredGoals from "@/utils/get-stored-goals.js";
-import goalCreationFormView from "@/views/goal-creation-form-view.js";
-import goalView from "@/views/goal-view.js";
+import getStoredGoals from "@/utils/get-stored-goals.mjs";
+import goalCreationFormView from "@/views/goal-creation-form-view.mjs";
+import goalView from "@/views/goal-view.mjs";
 
 const init = {
   currentDragIndex: null,

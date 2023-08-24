@@ -1,4 +1,4 @@
-import saveGoalList from "@/effects/save-goal-list.js";
+import saveGoalList from "@/effects/save-goal-list.mjs";
 
 export default function AddGoal(state, payload) {
   const description = payload;

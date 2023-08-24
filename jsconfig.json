@@ -1,10 +1,12 @@
 {
   "compilerOptions": {
-    "checkJs": false,
+    "checkJs": true,
     "module": "ES2022",
     "target": "ES2022",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@hyperapp/html": ["./node_modules/@hyperapp/html/index.js"],
+      "hyperapp": ["./node_modules/hyperapp/index.js"]
     }
   }
 }

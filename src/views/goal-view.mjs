@@ -1,9 +1,9 @@
 import { button, li, text } from "@hyperapp/html";
 
-import DeleteGoal from "@/actions/delete-goal.js";
-import SwapGoalPositions from "@/actions/swap-goal-positions.js";
-import UpdateDragIndex from "@/actions/update-drag-index.js";
-import UpdateDragoverIndex from "@/actions/update-dragover-index.js";
+import DeleteGoal from "@/actions/delete-goal.mjs";
+import SwapGoalPositions from "@/actions/swap-goal-positions.mjs";
+import UpdateDragIndex from "@/actions/update-drag-index.mjs";
+import UpdateDragoverIndex from "@/actions/update-dragover-index.mjs";
 
 export default function goalView(props) {
   const { goal, index, isHighlighted } = props;
