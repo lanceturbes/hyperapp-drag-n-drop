@@ -1,4 +1,4 @@
-import { button, li, text } from "@hyperapp/html";
+import { button, li, span, text } from "@hyperapp/html";
 
 import DeleteGoal from "@/actions/delete-goal.mjs";
 import SwapGoalPositions from "@/actions/swap-goal-positions.mjs";
@@ -22,7 +22,7 @@ export default function goalView(props) {
 
   return li(
     {
-      class: { "goal-item": true, highlight: isHighlighted },
+      class: { "goals__list-item": true, highlight: isHighlighted },
       draggable: "true",
       ondragstart: [UpdateDragIndex, index],
       ondragend: SwapGoalPositions,
@@ -31,6 +31,9 @@ export default function goalView(props) {
       ondragleave: [UpdateDragoverIndex, null],
       ondrop: [SwapGoalPositions, index],
     },
-    [text(description), button({ onclick: [DeleteGoal, id] }, text("Delete"))]
+    [
+      span({ class: "goals__list-item-text" }, text(description)),
+      button({ onclick: [DeleteGoal, id] }, text("Delete")),
+    ]
   );
 }

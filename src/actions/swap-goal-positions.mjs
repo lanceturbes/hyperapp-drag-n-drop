@@ -3,6 +3,11 @@ import swapItemsInArray from "@/utils/swap-items-in-array.mjs";
 
 export default function SwapGoalPositions(state) {
   const { goalList, currentDragIndex, dragoverIndex } = state;
+
+  if (currentDragIndex === null || dragoverIndex === null) {
+    return state;
+  }
+
   const newGoalList = swapItemsInArray(
     goalList,
     currentDragIndex,

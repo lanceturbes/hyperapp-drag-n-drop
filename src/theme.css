@@ -1,0 +1,17 @@
+:root[data-theme="light"] {
+  color-scheme: light;
+  --screen: #e2e8f0;
+  --surface: #f8fafc;
+  --primary: #408fcf;
+  --neutral-on-primary: white;
+  --neutral-on-screen: #020617;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --screen: #1e293b;
+  --surface: #0f172a;
+  --primary: #408fcf;
+  --neutral-on-primary: white;
+  --neutral-on-screen: #f8fafc;
+}
