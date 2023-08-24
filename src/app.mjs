@@ -1,9 +1,9 @@
 import { div, ul } from "@hyperapp/html";
 import { app } from "hyperapp";
 
-import getStoredGoals from "./utils/get-stored-goals.js";
-import goalCreationFormView from "./views/goal-creation-form-view.js";
-import goalView from "./views/goal-view.js";
+import getStoredGoals from "@/utils/get-stored-goals.js";
+import goalCreationFormView from "@/views/goal-creation-form-view.js";
+import goalView from "@/views/goal-view.js";
 
 const init = {
   currentDragIndex: null,
@@ -25,5 +25,9 @@ function view(state) {
   ]);
 }
 
+function subscriptions(_) {
+  return [];
+}
+
 const node = document.getElementById("app");
-app({ init, view, node });
+app({ init, view, node, subscriptions });

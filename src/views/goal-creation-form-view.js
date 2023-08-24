@@ -1,7 +1,7 @@
 import { button, form, input, label, text } from "@hyperapp/html";
 
-import AddGoal from "../actions/add-goal.js";
-import UpdateGoalEditValue from "../actions/update-goal-edit-value.js";
+import AddGoal from "@/actions/add-goal.js";
+import UpdateGoalEditValue from "@/actions/update-goal-edit-value.js";
 
 export default function goalCreationFormView(props) {
   const { goalEditValue } = props;
