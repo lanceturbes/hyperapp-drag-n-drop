@@ -7,7 +7,8 @@ export default function headerView() {
     return (state, event) => {
       event.preventDefault();
       if (window.location.pathname !== path) {
-        window.location.pathname = path;
+        history.pushState({}, "", path);
+        window.dispatchEvent(new CustomEvent("pushstate"));
       }
       return state;
     };
