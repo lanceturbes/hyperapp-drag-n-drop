@@ -1,32 +1,29 @@
-import { button, div, form, input, label, text } from "@hyperapp/html";
+import html from "hyperlit"
 
-import AddGoal from "@/actions/add-goal.mjs";
-import UpdateGoalEditValue from "@/actions/update-goal-edit-value.mjs";
+import AddGoal from "@/actions/add-goal.mjs"
+import UpdateGoalEditValue from "@/actions/update-goal-edit-value.mjs"
 
-export default function goalCreationFormView(props) {
-  const { goalEditValue } = props;
+const goalCreationFormView = ({ goalEditValue }) => html`
+  <form
+    class="form"
+    onsubmit=${({ goalEditValue }, event) => {
+      event.preventDefault()
+      return [AddGoal, goalEditValue]
+    }}
+  >
+    <label for="goal-edit-input">New Goal</label>
+    <div class="form__input-control">
+      <input
+        class="form__input"
+        autocomplete="off"
+        autofocus="true"
+        id="goal-edit-input"
+        oninput=${(_state, event) => [UpdateGoalEditValue, event.target.value]}
+        value=${goalEditValue}
+      />
+      <button type="submit" disabled=${goalEditValue === ""}>Add</button>
+    </div>
+  </form>
+`
 
-  function handleSubmit(state, formEvent) {
-    formEvent.preventDefault();
-    return [AddGoal, state.goalEditValue];
-  }
-
-  function handleInput(_, inputEvent) {
-    return [UpdateGoalEditValue, inputEvent.target.value];
-  }
-
-  return form({ class: "form", onsubmit: handleSubmit }, [
-    label({ for: "goal-edit-input" }, text("New Goal")),
-    div({ class: "form__input-control" }, [
-      input({
-        class: "form__input",
-        autocomplete: "off",
-        autofocus: true,
-        id: "goal-edit-input",
-        oninput: handleInput,
-        value: goalEditValue,
-      }),
-      button({ type: "submit", disabled: goalEditValue === "" }, text("Add")),
-    ]),
-  ]);
-}
+export default goalCreationFormView

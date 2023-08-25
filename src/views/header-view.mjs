@@ -1,22 +1,22 @@
-import { a, header, text } from "@hyperapp/html";
+import html from "hyperlit"
 
-import darkModeToggleView from "./dark-mode-toggle-view.mjs";
+import darkModeToggleView from "@/views/dark-mode-toggle-view.mjs"
 
-export default function headerView() {
-  function handleNavigate(path) {
-    return (state, event) => {
-      event.preventDefault();
-      if (window.location.pathname !== path) {
-        history.pushState({}, "", path);
-        window.dispatchEvent(new CustomEvent("pushstate"));
-      }
-      return state;
-    };
+const handleNavigate = pathname => (state, event) => {
+  event.preventDefault()
+  if (location.pathname !== pathname) {
+    history.pushState({}, "", pathname)
+    dispatchEvent(new CustomEvent("pushstate"))
   }
-
-  return header({ class: "header" }, [
-    a({ onclick: handleNavigate("/") }, text("Home")),
-    a({ onclick: handleNavigate("/about") }, text("About")),
-    darkModeToggleView(),
-  ]);
+  return state
 }
+
+const headerView = () => html`
+  <header class="header">
+    <a onclick=${handleNavigate("/")}>Home</a>
+    <a onclick=${handleNavigate("/about")}>About</a>
+    <${darkModeToggleView} />
+  </header>
+`
+
+export default headerView

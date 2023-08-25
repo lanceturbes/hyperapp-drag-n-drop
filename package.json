@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "hyperapp": "^2.0.22",
-    "@hyperapp/html": "^2.0.0",
-    "modern-normalize": "^2.0.0"
-  }
-}

@@ -1,16 +1,16 @@
-import saveGoalList from "@/effects/save-goal-list.mjs";
+import saveGoalList from "@/effects/save-goal-list.mjs"
 
 export default function AddGoal(state, payload) {
-  const description = payload;
-  const { goalList } = state;
-  const newGoal = { id: Date.now(), description };
-  const newGoalList = goalList.concat(newGoal);
+  const description = payload
+  const { goalList } = state
+  const newGoal = { id: Date.now(), description }
+  const newGoalList = goalList.concat(newGoal)
   return [
     {
       ...state,
       goalList: newGoalList,
-      goalEditValue: "",
+      goalEditValue: ""
     },
-    [saveGoalList, { goalList: newGoalList }],
-  ];
+    [saveGoalList, { goalList: newGoalList }]
+  ]
 }

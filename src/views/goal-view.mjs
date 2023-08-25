@@ -1,39 +1,32 @@
-import { button, li, span, text } from "@hyperapp/html";
+import html from "hyperlit"
 
-import DeleteGoal from "@/actions/delete-goal.mjs";
-import SwapGoalPositions from "@/actions/swap-goal-positions.mjs";
-import UpdateDragIndex from "@/actions/update-drag-index.mjs";
-import UpdateDragoverIndex from "@/actions/update-dragover-index.mjs";
+import DeleteGoal from "@/actions/delete-goal.mjs"
+import SwapGoalPositions from "@/actions/swap-goal-positions.mjs"
+import UpdateDragIndex from "@/actions/update-drag-index.mjs"
+import UpdateDragoverIndex from "@/actions/update-dragover-index.mjs"
 
-export default function goalView(props) {
-  const { goal, index, isHighlighted } = props;
-  const { id, description } = goal;
+const goalView = ({ goal: { id, description }, index, isHighlighted }) => html`
+  <li
+    class=${{ "goals__list-item": true, highlight: isHighlighted }}
+    draggable="true"
+    ondragstart=${[UpdateDragIndex, index]}
+    ondragend=${SwapGoalPositions}
+    ondragenter=${(state, event) => {
+      event.preventDefault()
+      return state
+    }}
+    ondragover=${(state, event) => {
+      event.preventDefault()
+      return index === state.dragoverIndex
+        ? state
+        : [UpdateDragoverIndex, index]
+    }}
+    ondragleave=${[UpdateDragoverIndex, null]}
+    ondrop=${[SwapGoalPositions, index]}
+  >
+    <span class="goals__list-item-text">${description}</span>
+    <button onclick=${[DeleteGoal, id]}>Delete</button>
+  </li>
+`
 
-  function handleDragEnter(state, event) {
-    event.preventDefault();
-    return state;
-  }
-
-  function handleDragOver(state, event) {
-    event.preventDefault();
-    const { dragoverIndex } = state;
-    return index === dragoverIndex ? state : [UpdateDragoverIndex, index];
-  }
-
-  return li(
-    {
-      class: { "goals__list-item": true, highlight: isHighlighted },
-      draggable: "true",
-      ondragstart: [UpdateDragIndex, index],
-      ondragend: SwapGoalPositions,
-      ondragenter: handleDragEnter,
-      ondragover: handleDragOver,
-      ondragleave: [UpdateDragoverIndex, null],
-      ondrop: [SwapGoalPositions, index],
-    },
-    [
-      span({ class: "goals__list-item-text" }, text(description)),
-      button({ onclick: [DeleteGoal, id] }, text("Delete")),
-    ]
-  );
-}
+export default goalView

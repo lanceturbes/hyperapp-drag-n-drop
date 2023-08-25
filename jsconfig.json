@@ -5,8 +5,8 @@
     "target": "ES2022",
     "paths": {
       "@/*": ["./src/*"],
-      "@hyperapp/html": ["./node_modules/@hyperapp/html/index.js"],
-      "hyperapp": ["./node_modules/hyperapp/index.js"]
+      "hyperapp": ["./vendor/hyperapp@2.0.22/index.mjs"],
+      "hyperlit": ["./vendor/hyperlit@0.3.6/index.mjs"]
     }
   }
 }

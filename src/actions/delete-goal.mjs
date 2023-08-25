@@ -1,10 +1,10 @@
-import saveGoalList from "@/effects/save-goal-list.mjs";
+import saveGoalList from "@/effects/save-goal-list.mjs"
 
 export default function DeleteGoal(state, payload) {
-  const goalId = payload;
-  const newGoalList = state.goalList.filter((goal) => goal.id !== goalId);
+  const goalId = payload
+  const newGoalList = state.goalList.filter(goal => goal.id !== goalId)
   return [
     { ...state, goalList: newGoalList },
-    [saveGoalList, { goalList: newGoalList }],
-  ];
+    [saveGoalList, { goalList: newGoalList }]
+  ]
 }

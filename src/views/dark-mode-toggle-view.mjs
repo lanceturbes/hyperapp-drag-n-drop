@@ -1,14 +1,9 @@
-import { button, text } from "@hyperapp/html";
+import html from "hyperlit"
 
-import toggleTheme from "@/effects/toggle-theme.mjs";
+import toggleTheme from "@/effects/toggle-theme.mjs"
 
-export default function darkModeToggleView() {
-  return button(
-    {
-      onclick: (state, event) => {
-        return [state, toggleTheme];
-      },
-    },
-    text("Theme")
-  );
-}
+const darkModeToggleView = () => html`
+  <button onclick=${state => [state, toggleTheme]}>Theme</button>
+`
+
+export default darkModeToggleView

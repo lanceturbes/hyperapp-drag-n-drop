@@ -1,12 +1,16 @@
-import aboutView from "./about-view.mjs";
-import homeView from "./home-view.mjs";
+import html from "hyperlit"
 
-export default function routerView(state) {
-  const { location } = state;
-  switch (location) {
-    case "/about":
-      return aboutView();
-    default:
-      return homeView(state);
-  }
+import aboutView from "@/pages/about-view.mjs"
+import homeView from "@/pages/home-view.mjs"
+
+const routes = {
+  "/about": aboutView,
+  "/": homeView
 }
+
+const routerView = state =>
+  state.location in routes
+    ? html`<${routes[state.location]} ...${state} />`
+    : html`<${homeView} ...${state} />`
+
+export default routerView
